@@ -1,0 +1,28 @@
+{
+    "name": "scriptibus/abstract-collection",
+    "description": "Provides an AbstractCollection which can be extended by any specific collection which can be used as typed array.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Scriptibus\\AbstractCollection\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Scriptibus\\AbstractCollection\\Tests\\": "tests/",
+            "Scriptibus\\AbstractCollection\\Examples\\": "examples/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lucas Nothnagel",
+            "email": "mail@lucasnothnagel.de"
+        }
+    ],
+    "require": {
+        "php": "^7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.4"
+    }
+}
