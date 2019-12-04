@@ -80,4 +80,20 @@ class AbstractCollectionTest extends TestCase
         $books['A'] = $book;
         self::assertSame($book, $books['A']);
     }
+
+    public function testTwoForLoopsGeneratorReset(): void
+    {
+        $bookA = new Book('A');
+        $bookB = new Book('B');
+        $bookC = new Book('C');
+        $books = new BookCollection($bookA, $bookB, $bookC);
+        foreach ($books as $book) {
+            // do nothing
+        }
+        $bookTmp = null;
+        foreach ($books as $book) {
+            $bookTmp = $book;
+        }
+        self::assertSame($bookTmp, $bookC);
+    }
 }

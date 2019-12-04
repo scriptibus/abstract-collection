@@ -90,7 +90,11 @@ abstract class AbstractCollection implements Iterator, ArrayAccess, Countable
 
     final public function rewind(): void
     {
-        $this->generator->rewind();
+        if ($this->generator->valid()) {
+            $this->generator->rewind();
+        } else {
+            $this->generator = $this->createGeneratorFromArray();
+        }
     }
 
     final public function count(): int
