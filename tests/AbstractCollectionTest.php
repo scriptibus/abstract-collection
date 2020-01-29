@@ -96,4 +96,22 @@ class AbstractCollectionTest extends TestCase
         }
         self::assertSame($bookTmp, $bookC);
     }
+
+    public function testTwoForLoopsWithOneUnfinishedGeneratorReset(): void
+    {
+        $bookA = new Book('A');
+        $bookB = new Book('B');
+        $bookC = new Book('C');
+        $books = new BookCollection($bookA, $bookB, $bookC);
+        foreach ($books as $book) {
+            if ($book === $bookB){
+                break;
+            }
+        }
+        $bookTmp = null;
+        foreach ($books as $book) {
+            $bookTmp = $book;
+        }
+        self::assertSame($bookTmp, $bookC);
+    }
 }

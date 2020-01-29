@@ -44,11 +44,13 @@ abstract class AbstractCollection implements Iterator, ArrayAccess, Countable
     final public function offsetSet($offset, $value): void
     {
         if (!is_object($value) || !is_a($value, static::getClass())) {
-            throw new TypeError(sprintf(
-                'Argument 2 passed to BookCollection::offsetSet hast to be of type %s, %s given',
-                static::getClass(),
-                gettype($value)
-            ));
+            throw new TypeError(
+                sprintf(
+                    'Argument 2 passed to BookCollection::offsetSet hast to be of type %s, %s given',
+                    static::getClass(),
+                    gettype($value)
+                )
+            );
         }
         if (isset($offset)) {
             $this->objects[$offset] = $value;
@@ -90,11 +92,7 @@ abstract class AbstractCollection implements Iterator, ArrayAccess, Countable
 
     final public function rewind(): void
     {
-        if ($this->generator->valid()) {
-            $this->generator->rewind();
-        } else {
-            $this->generator = $this->createGeneratorFromArray();
-        }
+        $this->generator = $this->createGeneratorFromArray();
     }
 
     final public function count(): int
