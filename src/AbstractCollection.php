@@ -10,7 +10,7 @@ use TypeError;
 
 abstract class AbstractCollection implements Iterator, ArrayAccess, Countable
 {
-    private array $objects;
+    public array $objects;
     private Generator $generator;
 
     public function __construct(object ...$objects)
@@ -64,6 +64,9 @@ abstract class AbstractCollection implements Iterator, ArrayAccess, Countable
         unset($this->objects[$offset]);
     }
 
+    /**
+     * @deprecated deprecated since 1.0.6 -> property $objects is now public
+     */
     final public function toArray(): array
     {
         return $this->objects;
