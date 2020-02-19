@@ -46,7 +46,7 @@ abstract class AbstractCollection implements Iterator, ArrayAccess, Countable
         if (!is_object($value) || !is_a($value, static::getClass())) {
             throw new TypeError(
                 sprintf(
-                    'Argument 2 passed to BookCollection::offsetSet hast to be of type %s, %s given',
+                    'Argument 2 passed to collection offsetSet hast to be of type %s, %s given',
                     static::getClass(),
                     gettype($value)
                 )
